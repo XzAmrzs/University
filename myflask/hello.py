@@ -1,5 +1,6 @@
 from flask import Flask
 from flask.ext.script import Manager
+from flask import render_template
 
 app=Flask(__name__)
 
@@ -7,11 +8,11 @@ manager = Manager(app)
 
 @app.route('/')
 def index():
-    return '<h1>Hello World!<h1>'
+    return render_template('index.html')
 
 @app.route('/user/<name>')
 def user(name):
-    return '<h1>Hello %s!<h1>' %name
+    return render_template('user.html',name = name)
 
 from flask import redirect
 @app.route('/user')
